@@ -30,4 +30,4 @@ bot_functions = ChannelCreator.jar:channelcreator
 * Restart your JTS3ServerMod.
 
 ## License 📑
-This code is available under the <a href="https://github.com/VocalZero/AudioCloud/blob/master/LICENSE">Apache-2.0 License</a>.
+This code is available under the <a href="https://github.com/atomicnetworkseu/JTS3ServerMod-ChannelCreator/blob/master/LICENSE">GNU General Public License v3.0</a>.
