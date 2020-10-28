@@ -100,8 +100,7 @@ public class ChannelCreator implements HandleBotEvents, HandleTS3Events {
     public void handleTS3Events(String eventType, HashMap<String, String> eventInfo) {
         if(eventType.equalsIgnoreCase("notifyclientmoved")) {
             if(Integer.valueOf(eventInfo.get("ctid")) == this.channel_creator) {
-                HashMap<String, String> commandResponse = this.queryLib.doCommand(MessageFormat.format("clientinfo clid={0}", Integer.valueOf(eventInfo.get("clid"))));
-                HashMap<String, String> clientInfo = getTS3Reponse(commandResponse.get("response").split(" "));
+                HashMap<String, String> clientInfo = this.modClass.getClientListEntry(Integer.valueOf(eventInfo.get("clid")));
                 if(this.getChannelManager().getChannel(this.queryLib.decodeTS3String(clientInfo.get("client_unique_identifier"))).getChannelId() != 0) {
                     Channel channel = this.getChannelManager().getChannel(this.queryLib.decodeTS3String(clientInfo.get("client_unique_identifier")));
                     HashMap<String, String> channelReponse = this.queryLib.doCommand(MessageFormat.format("channelinfo cid={0}", channel.getChannelId()));
