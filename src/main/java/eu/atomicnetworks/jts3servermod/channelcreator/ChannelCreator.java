@@ -29,9 +29,9 @@ public class ChannelCreator implements HandleBotEvents, HandleTS3Events {
     private ChannelManager channelManager;
     private Gson gson;
     
-    private final int channel_creator = 84;
-    private final int channel_order = 209;
-    private final int channel_role = 9;
+    private final int channel_creator = 84; //84
+    private final int channel_order = 85; //85
+    private final int channel_role = 9; // 9
     
     public static void main(String[] args) {
     }
@@ -126,7 +126,7 @@ public class ChannelCreator implements HandleBotEvents, HandleTS3Events {
     }
     
     private void createChannel(HashMap<String, String> eventInfo, HashMap<String, String> clientInfo) {
-        HashMap<String, String> channelReponse = this.queryLib.doCommand(MessageFormat.format("channelcreate channel_name={0} channel_topic={1} channel_flag_permanent=1 channel_order={2}", this.queryLib.encodeTS3String(this.queryLib.decodeTS3String(clientInfo.get("client_nickname")) + "'s Channel"), this.queryLib.encodeTS3String("🐹  Created by " + this.queryLib.decodeTS3String(clientInfo.get("client_nickname") + " • " + this.queryLib.decodeTS3String(clientInfo.get("client_unique_identifier")))), this.channel_order));
+        HashMap<String, String> channelReponse = this.queryLib.doCommand(MessageFormat.format("channelcreate channel_name={0} channel_topic={1} channel_flag_permanent=1 channel_order={2} channel_codec_quality=10", this.queryLib.encodeTS3String(this.queryLib.decodeTS3String(clientInfo.get("client_nickname")) + "'s Channel"), this.queryLib.encodeTS3String("🐹  Created by " + this.queryLib.decodeTS3String(clientInfo.get("client_nickname") + " • " + this.queryLib.decodeTS3String(clientInfo.get("client_unique_identifier")))), this.channel_order));
         HashMap<String, String> channelInfo = getTS3Reponse(channelReponse.get("response").split(" "));
         try {
             this.queryLib.moveClient(Integer.valueOf(eventInfo.get("clid")), Integer.valueOf(channelInfo.get("cid")), "");
